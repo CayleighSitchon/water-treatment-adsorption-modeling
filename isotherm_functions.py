@@ -5,9 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
-# -----------------------------
 # Isotherm functions
-# -----------------------------
 def langmuir_isotherm(C, q_max, b):
     """Langmuir isotherm q*(C) = q_max * b C / (1 + b C)"""
     Cpos = np.maximum(C, 0.0)
@@ -18,9 +16,8 @@ def freundlich_isotherm(C, Kf, n):
     Cpos = np.maximum(C, 0.0)
     return Kf * (Cpos ** (1.0 / n))
 
-# -----------------------------
+
 # ODE system
-# -----------------------------
 def adsorption_odes(t, y, params, isotherm='langmuir'):
     """
     Returns [dC/dt, dq/dt] for the kinetically-limited batch model.
@@ -44,9 +41,7 @@ def adsorption_odes(t, y, params, isotherm='langmuir'):
     dCdt = - (m / V) * dqdt
     return [dCdt, dqdt]
 
-# -----------------------------
-# Simulation helper
-# -----------------------------
+
 def run_simulation(params, C0=50.0, q0=0.0, t_span=(0,200), t_eval=None, isotherm='langmuir', solver='BDF'):
     if t_eval is None:
         t_eval = np.linspace(t_span[0], t_span[1], 500)
@@ -56,12 +51,8 @@ def run_simulation(params, C0=50.0, q0=0.0, t_span=(0,200), t_eval=None, isother
     if not sol.success:
         raise RuntimeError("ODE solver failed: " + str(sol.message))
     return sol
-
-# -----------------------------
-# Utility: run examples and save results
-# -----------------------------
+# Will run the examples and save results on file
 def example_and_save():
-    # Example (lab-scale) parameters
     params = {
         'V': 1.0,         # L
         'm': 1.0,         # g
@@ -87,11 +78,11 @@ def example_and_save():
     solF = run_simulation(params, C0=C0, q0=q0, t_span=t_span, t_eval=t_eval, isotherm='freundlich')
     C_final_F = solF.y[0, -1]
     removal_pct_F = 100.0 * (C0 - C_final_F) / C0
-
     print(f"Final removal (Langmuir)  : {removal_pct_L:.2f} % (C_final = {C_final_L:.3f} mg/L)")
     print(f"Final removal (Freundlich): {removal_pct_F:.2f} % (C_final = {C_final_F:.3f} mg/L)")
 
-    # Plot
+
+    
     plt.figure(figsize=(10,4))
     plt.subplot(1,2,1)
     plt.plot(solL.t, solL.y[0], label='C (mg/L)')
@@ -104,11 +95,10 @@ def example_and_save():
     plt.plot(solF.t, solF.y[1], label='q (mg/g)')
     plt.title('Freundlich')
     plt.xlabel('Time (min)'); plt.legend()
-
-    plt.tight_layout()
+plt.tight_layout()
     plt.show()
 
-    # Save small CSV of final results
+
     out_df = pd.DataFrame([{
         'isotherm': 'Langmuir',
         'C0': C0, 'C_final': float(C_final_L), 'removal_pct': float(removal_pct_L),
@@ -124,3 +114,4 @@ def example_and_save():
 
 if __name__ == '__main__':
     example_and_save()
+
