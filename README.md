@@ -1,5 +1,5 @@
 # water-treatment-adsorption-modeling
-ODE-based adsorption modeling batch reactor for Langmuir &amp; Freundlich isotherms, with synthetic dataset generation
+ODE-based adsorption modeling batch reactor for Langmuir &amp; Freundlich isotherms, with synthetic dataset generation. SIMULATION IS UNDER A WORK IN PROCESS
 
 This repository contains a student-built modeling framework for adsorption-based water treatment. The idea is to simulate a batch-reactor adsorption process using well-known isotherm models, generate synthetic datasets, and explore how different parameters affect adsorption behavior. It uses Langmuir and Freundlich isotherm models, ODE-based simulation of batch reactor adsorption over time, synthetic dataset generation for testing, and visualization tools. The goal is to provide an easy, flexible environment to experiment with adsorption without needing expensive or proprietary software.
 
