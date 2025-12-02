@@ -3,11 +3,11 @@ ODE-based adsorption modeling batch reactor for Langmuir &amp; Freundlich isothe
 
 This repository contains a student-built modeling framework for adsorption-based water treatment. The idea is to simulate a batch-reactor adsorption process using well-known isotherm models, generate synthetic datasets, and explore how different parameters affect adsorption behavior. It uses Langmuir and Freundlich isotherm models, ODE-based simulation of batch reactor adsorption over time, synthetic dataset generation for testing, and visualization tools. The goal is to provide an easy, flexible environment to experiment with adsorption without needing expensive or proprietary software.
 
-#Why I made it
+#W hy I made it
 
 As part of my water-quality research at my community college, I wanted to learn how to use python more effectively in the lab and also needed a way to quickly simulate adsorption-based clean-up under different conditions. I couldn’t find a small, open, easy-to-use tool that did exactly what I needed, so I built this. Developing this project helped me understand adsorption isotherms, practice ODE-based modeling in Python, write reusable code, and generate synthetic data to anticipate real experiments.
 
-#What’s included in the repo
+# What’s included in the repo
 isotherm_functions.py – Langmuir and Freundlich isotherm functions
 simulation.py – ODE-based batch reactor adsorption simulation
 random_generator.py – Synthetic dataset generation
@@ -16,7 +16,7 @@ eda_dashboard_graphs.py – Generates plots for exploratory data analysis
 Simulation_notebook.ipynb – Jupyter notebook tying everything together
 .gitignore and LICENSE – Standard project files
 
-#How to use it
+# How to use it
 -Clone the repository
 -Set up a Python environment with dependencies like NumPy, SciPy, Matplotlib, and pandas
 -Open Simulation_notebook.ipynb to:
